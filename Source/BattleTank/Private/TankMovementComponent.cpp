@@ -15,8 +15,11 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 {
 	// No need to call Super as we're replacing the functionality
 	
-	auto TankName = GetOwner()->GetName();
-	UE_LOG(LogTemp, Warning, TEXT ("%s has a move velocity of %s"), *TankName, *MoveVelocity.ToString())
+	auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
+	auto AIForwardIntention = MoveVelocity.GetSafeNormal();
+	float ForwardThrow = FVector::DotProduct(TankForward, AIForwardIntention);
+	
+	IntendMoveForward(ForwardThrow);
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
