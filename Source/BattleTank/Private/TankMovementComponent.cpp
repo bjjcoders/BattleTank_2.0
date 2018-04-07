@@ -11,6 +11,14 @@ void UTankMovementComponent::Initiaslise(UTankTrack * LeftTrackToSet, UTankTrack
 }
 
 
+void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	// No need to call Super as we're replacing the functionality
+	
+	auto TankName = GetOwner()->GetName();
+	UE_LOG(LogTemp, Warning, TEXT ("%s has a move velocity of %s"), *TankName, *MoveVelocity.ToString())
+}
+
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
 	if (!LeftTrack || !RightTrack) { return; }
