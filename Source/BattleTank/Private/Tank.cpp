@@ -8,10 +8,19 @@
 #include "Projectile.h"
 
 
-// Sets default values
+
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	auto TankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("DONKEY: %s C++ Begin Play"), *TankName)
+}
+
 ATank::ATank()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	auto TankName = GetName();
+ 	UE_LOG(LogTemp, Warning, TEXT("DONKEY: %s C++ Construct Tank"), *TankName)
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 }
 
