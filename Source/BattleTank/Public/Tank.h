@@ -17,3 +17,4 @@ class BATTLETANK_API ATank : public APawn
 	// Sets default values for this pawn's properties
 	ATank();
 };
+

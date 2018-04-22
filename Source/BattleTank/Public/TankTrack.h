@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "TankTrack.generated.h"
 
+
 /**
  * TankTrack is used to set maximum driving force, and to apply forces to the tank
  */
@@ -26,6 +27,20 @@ public:
 private:
 	UTankTrack();
 
-	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	virtual void BeginPlay() override;
+
+	void ApplySidewaysForce();
+
+	UFUNCTION()
+	void OnHit( UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+
+	void DriveTrack();
+
+	float CurrentThrottle = 0;
+
+	UTankTrack * LeftTrack = nullptr;
+	UTankTrack * RightTrack = nullptr;
 
 };
+
+
